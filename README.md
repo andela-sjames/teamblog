@@ -1,0 +1,2 @@
+# teamblog
+django blog demonstration.
