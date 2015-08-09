@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load bootstrap_toolkit %}
+{% block title %}Create{% endblock %}
+
+{% block sidewell%}
+<ul>
+<li><a href = '/articles/'>Cancel</a></li>
+</ul>
+{% endblock%}
+
+{% block content %}
+    
+   	<form action = "/create/" method = "post" enctype = "multipart/form-data">{% csrf_token %}
+    <ul>
+    {{form|as_bootstrap}} <!--you can also render as (as_table) or (as_p)-->
+	</ul>
+	
+	<button type="submit" name = "submit" class="btn btn-primary">Create Article</button>
+    </form>
+   
+{% endblock %}

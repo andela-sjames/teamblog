@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block content %}
+
+<h1>{{ article.title }}</h1>
+<hr>
+<h3>By {{ article.author }}</h3>
+<hr>
+<p>{{ article.body }}</p>
+<hr>
+{% if article.thumbnail %}
+<p><img src = "/assets/{{article.thumbnail}}" height = "300" width = "600"/></P>
+{% endif %}
+
+{% endblock %}

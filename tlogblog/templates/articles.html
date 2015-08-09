@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block content %}
+
+ <!--Blog Post -->
+        
+{% if articles.count > 0 %}
+{% for article in articles %}
+
+
+    <h2>
+       <a href = "/articles/get/{{ article.id }}/">{{ article.title }}</a>
+    </h2>
+    <p class="lead">
+        by <a href="#">{{ article.author }}</a>
+    </p>
+    <p><span class="glyphicon glyphicon-time"></span>{{ article.pub_date }}</p>
+    <hr>
+    {% if article.thumbnail %}
+    <p><img class="img-responsive" src = "/assets/{{ article.thumbnail }}" height = "300" width = "600"></P>
+    {% endif %}
+    <hr>
+       
+    <p>{{ article.body|lower|truncatewords:"100" }}</p> <!--you can also use the "upper filters"-->
+
+    <a class="btn btn-primary" href = "/articles/get/{{ article.id }}/">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+{% endfor %}
+{% else %}
+
+<p>None to show!</p>
+
+{% endif %}
+
+                
+
+
+{% endblock %}
+
+
+{% block sidewell %}
+
+{% if quote.count > 0 %}
+{% for q in quote %}
+
+<h4>{{q.title}}</h4>
+<p>{{q.body}}</p>
+
+{% endfor %}
+{% else %}
+
+<h4>The Gospel Truth</h4>
+<p>For God so loved the World, that He gave His only begotten Son that whosoever believeth in him should not perish but have everlasting life.(JOHN 3:16)</p>
+
+{% endif %}
+
+
+{% endblock %}
+
+
+{% block modify %}
+    <li><a href="/create/">Create New Article</a>
+    </li>
+    <li><a href="/newquote/">Add New Quote</a>
+    </li>
+    <li><a href="/accounts/register/">Register</a>
+    </li>
+    <li><a href="/accounts/logout/">LogOut</a>
+    </li>
+    <li><a href="/json/">Master</a>
+    </li>
+    <li><a href="/articlelist/">Article List</a>
+    </li>
+{% endblock %}

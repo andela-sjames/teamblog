@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content%}
+<h1>Articles</h1>
+<ul>
+{% for article in object_list %}
+    <li>{{ article.pub_date|date }} - <a href = "/articles/get/{{ article.id }}/">{{ article.title }}</a></li>
+{% empty %}
+    <li>No articles yet.</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
