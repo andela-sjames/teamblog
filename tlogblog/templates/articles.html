@@ -8,6 +8,9 @@
 {% if articles.count > 0 %}
 {% for article in articles %}
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
 
     <h2>
        <a href = "/articles/get/{{ article.id }}/">{{ article.title }}</a>
@@ -21,10 +24,15 @@
     <p><img class="img-responsive" src = "/assets/{{ article.thumbnail }}" height = "300" width = "600"></P>
     {% endif %}
     <hr>
-       
+ 
+
     <p>{{ article.body|lower|truncatewords:"100" }}</p> <!--you can also use the "upper filters"-->
 
     <a class="btn btn-primary" href = "/articles/get/{{ article.id }}/">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+       </div>
+    </div>
+</div>
 
 {% endfor %}
 {% else %}

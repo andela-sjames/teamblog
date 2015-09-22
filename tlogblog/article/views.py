@@ -93,8 +93,7 @@ def register_user(request):
 
 
     args = {}
-    args.update(csrf(request))
-
+    args.update(csrf(request)),
     args['form'] = MyRegistrationForm()
 
     return render(request,'register.html',args)
@@ -164,8 +163,16 @@ class ArticleListView(ListView):
         context = super(ArticleListView, self).get_context_data(**kwargs)
         context['now'] = timezone.now()
         return context
+'''
+class UserSignupView(TemplateView):
+  template_name = 'account/signup.html'
 
-
+  def get_context_data(self, **kwargs):
+    auth_token = unicode(csrf(self.request)['csrf_token'])
+    context = super(UserSignupView,self).get_context_data(**kwargs)
+    context['csrf_token'] = auth_token
+    return context
+'''
 
 
  
