@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'bootstrap_toolkit',
     'django.contrib.sitemaps',
+    'pagedown',
 )
 
 MIDDLEWARE_CLASSES = (
